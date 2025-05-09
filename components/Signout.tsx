@@ -15,7 +15,7 @@ const Signout = async () => {
       className='p-4  flex flex-col items-center rounded-lg border-2 shadow-xl gap-4 min-w-[300px]'
     >
       <div className='flex justify-center p-2'>
-        {/* <Link
+        <Link
           href='/'
           aria-label='Logo'
         >
@@ -26,7 +26,7 @@ const Signout = async () => {
             height={60}
             className='w-full h-full object-cover rounded-full  '
           />
-        </Link> */}
+        </Link>
       </div>
       <p>Czy na pewno chcesz się wylogować?</p>
       <Button
