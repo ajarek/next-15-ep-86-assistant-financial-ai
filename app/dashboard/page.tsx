@@ -12,7 +12,16 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import {  Dot, Sparkles } from 'lucide-react'
+import {
+  ChartSpline,
+  CreditCard,
+  DollarSign,
+  Dot,
+  PiggyBank,
+  Sparkles,
+  TrendingDown,
+  TrendingUp,
+} from 'lucide-react'
 import DashboardHeader from '@/components/DashboardHeader'
 import { ChartLinear } from '@/components/ChartLinear'
 import { ChartPie } from '@/components/ChartPie'
@@ -29,11 +38,142 @@ const Dashboard = async () => {
       <div className='w-full  grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center'>
         <ChartBar />
         <ChartDonut />
-        <ChartPie/>
+        <ChartPie />
         <ChartLinear />
       </div>
 
       <div className='w-full  grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center'>
+        <Card className='w-full'>
+          <CardHeader className='flex items-center gap-2'>
+            <CardTitle>Twoje Konto</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className='flex items-center justify-between gap-4'>
+              <div className='flex items-center  gap-4'>
+                <DollarSign
+                  size={40}
+                  color='green'
+                />
+                <div>
+                  <h2 className='font-semibold'>Główne konto czekowe</h2>
+                  <p>książka czekowa</p>
+                </div>
+              </div>
+              <div>5280.22 PLN</div>
+            </div>
+            <div className='flex items-center justify-between gap-4'>
+              <div className='flex items-center  gap-4'>
+                <PiggyBank
+                  size={40}
+                  color='blue'
+                />
+                <div>
+                  <h2 className='font-semibold'>Oszczędności</h2>
+                  <p>Lokaty</p>
+                </div>
+              </div>
+              <div>8280.22 PLN</div>
+            </div>
+            <div className='flex items-center justify-between gap-4'>
+              <div className='flex items-center  gap-4'>
+                <CreditCard
+                  size={40}
+                  color='violet'
+                />
+                <div>
+                  <h2 className='font-semibold'>Karta kredytowa</h2>
+                  <p>Visa</p>
+                </div>
+              </div>
+              <div>2412.42 PLN</div>
+            </div>
+            <div className='flex items-center justify-between gap-4'>
+              <div className='flex items-center  gap-4'>
+                <ChartSpline
+                  size={40}
+                  color='red'
+                />
+                <div>
+                  <h2 className='font-semibold'>Portfel inwestycyjny</h2>
+                  <p>Giełda</p>
+                </div>
+              </div>
+              <div>3180.33 PLN</div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className='w-full'>
+          <CardHeader className='flex items-center gap-2'>
+            <CardTitle>Ostatnie transakcje</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className='flex items-center justify-between gap-4'>
+              <div className='flex items-center  gap-4'>
+                <div className='w-10 h-10 flex items-center justify-center rounded-full bg-red-200'>
+                  <TrendingDown color='red' />
+                </div>
+                <div>
+                  <h2 className='font-semibold'>Sklep spożywczy</h2>
+                  <p>Zakupy</p>
+                </div>
+              </div>
+              <div>
+                <p className='text-red-500'>-280.22 PLN</p>
+                <p>12-05-2025</p>
+              </div>
+            </div>
+
+            <div className='flex items-center justify-between gap-4'>
+              <div className='flex items-center  gap-4'>
+                <div className='w-10 h-10 flex items-center justify-center rounded-full bg-green-200'>
+                  <TrendingUp color='green' />
+                </div>
+                <div>
+                  <h2 className='font-semibold'>Depozyt na pensję</h2>
+                  <p>Dochód</p>
+                </div>
+              </div>
+              <div>
+                <p className='text-green-500'>5000.00 PLN</p>
+                <p>05-05-2025</p>
+              </div>
+            </div>
+            <div className='flex items-center justify-between gap-4'>
+              <div className='flex items-center  gap-4'>
+                <div className='w-10 h-10 flex items-center justify-center rounded-full bg-red-200'>
+                  <TrendingDown color='red' />
+                </div>
+                <div>
+                  <h2 className='font-semibold'>Rachunek za prąd</h2>
+                  <p>Media</p>
+                </div>
+              </div>
+              <div>
+
+                <p className='text-red-500'>-470.25 PLN</p>
+                <p>12-05-2025</p>
+              </div>
+            </div>
+            <div className='flex items-center justify-between gap-4'>
+              <div className='flex items-center  gap-4'>
+                <div className='w-10 h-10 flex items-center justify-center rounded-full bg-green-200'>
+                  <TrendingUp color='green' />
+                </div>
+                <div>
+                  <h2 className='font-semibold'>Automatyczny transfer</h2>
+                  <p>Oszczędności</p>
+                </div>
+              </div>
+              <div>
+
+                <p className='text-green-500'>1000.00 PLN</p>
+                <p>12-05-2025</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         <Card>
           <CardHeader className='flex items-center gap-2'>
             <Sparkles
