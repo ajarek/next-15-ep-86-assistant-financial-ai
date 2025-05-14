@@ -13,9 +13,9 @@ const NotFoundPage = () => {
       </p>
       <div className=''>
         <Link href='/dashboard'
-          className='w-full rounded-[2px] px-4 py-2 bg-primary '
+          className='w-full rounded-sm px-4 py-2 bg-primary hover:bg-violet-400 '
         >
-          Powrót do strony głównej
+          Powrót do panelu 
         </Link>
       </div>
     </div>
