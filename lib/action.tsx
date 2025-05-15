@@ -4,6 +4,7 @@ import connectToDb from './connectToDb'
 import { User, UserWithoutId } from './models'
 import { revalidatePath } from 'next/cache'
 import bcrypt from 'bcryptjs'
+import { signOut } from '@/app/api/auth/auth'
 import { redirect } from 'next/navigation'
 
 export const addUser = async (formData: UserWithoutId) => {
@@ -19,13 +20,12 @@ export const addUser = async (formData: UserWithoutId) => {
       isAdmin,
     })
     await newUser.save()
-   
+
     revalidatePath('/')
     return { status: 200 }
   } catch (err) {
     console.log(err)
   }
-  
 }
 
 export const deleteUser = async (formData: FormData) => {
@@ -34,7 +34,8 @@ export const deleteUser = async (formData: FormData) => {
   try {
     await connectToDb()
     await User.findOneAndDelete({ _id: id })
-    revalidatePath('/dashboard')
+
+    revalidatePath('/')
     console.log({ message: `Deleted user ${id}` })
     return { message: `Deleted user ${id}` }
   } catch (err) {
@@ -43,10 +44,10 @@ export const deleteUser = async (formData: FormData) => {
 }
 
 export const updateUser = async (formData: FormData) => {
-  const _id = formData.get('_id')
+  const _id = formData.get('id')
   const username = formData.get('username')
   const email = formData.get('email')
-  const img = formData.get('img')
+  const img = formData.get('image')
   const isAdmin = formData.get('isAdmin')
 
   try {
@@ -60,12 +61,39 @@ export const updateUser = async (formData: FormData) => {
         isAdmin: isAdmin === 'true' ? Boolean(true) : Boolean(false),
       }
     )
-    revalidatePath(`/dashboard`)
-
+    console.log(`Updated user ${_id}`)
+   
+    revalidatePath('/dashboard')
     return { message: `Updated user ${_id}` }
   } catch (err) {
     return { message: 'Failed to update to db' + err }
-  } finally {
+  }finally{
+    await signOut()
     redirect('/')
   }
+}
+
+export const resetPassword = async (formData: FormData) => {
+  const id = formData.get('id')
+  const password = formData.get('password')
+  const hashedPassword =  bcrypt.hash(password, 5)
+
+  try {
+    await connectToDb()
+    await User.findOneAndUpdate(
+      { _id: id },
+      {
+        password: hashedPassword,
+      }
+    )
+    console.log(`Updated user ${id}`)
+    revalidatePath('/dashboard')
+    return { message: `Updated user ${id}` }
+  }catch{
+    return { message: 'Failed to update to db' }
+  
+}finally{
+  await signOut()
+  redirect('/')
+}
 }

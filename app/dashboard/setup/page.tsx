@@ -3,14 +3,12 @@ import { auth } from '@/app/api/auth/auth'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ModeToggle } from '@/components/ModeToggle'
-import mongoose from 'mongoose'
+
 
 const Setup = async () => {
   const session = await auth()
 
-const objectIdBuffer = Object.values(session?.user?.id?.buffer)
-const buffer = Buffer.from(objectIdBuffer) 
-const objectIdString = new mongoose.Types.ObjectId(buffer).toString(); 
+ 
 
 
   return (
@@ -36,7 +34,7 @@ const objectIdString = new mongoose.Types.ObjectId(buffer).toString();
           </div>
 
           <Link
-            href={`/dashboard/updateUser?id=${objectIdString}&name=${session?.user?.name}&email=${session?.user?.email}&image=${session?.user?.image}`}
+            href={`/dashboard/updateUser?id=${session?.user?.id}&name=${session?.user?.name}&email=${session?.user?.email}&image=${session?.user?.image}`}
             className='bg-primary text-primary-foreground py-2 px-4 rounded-sm '
           >
             Edytuj Profil
@@ -64,7 +62,7 @@ const objectIdString = new mongoose.Types.ObjectId(buffer).toString();
             </div>
           </div>
           <Link
-            href={'/'}
+            href={`/changePassword?id=${session?.user?.id}`}
             className='bg-primary text-primary-foreground py-2 px-4 rounded-sm '
           >
             Zmień Hasło

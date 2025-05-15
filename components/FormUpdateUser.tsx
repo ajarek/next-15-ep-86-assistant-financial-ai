@@ -4,6 +4,7 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { updateUser } from '@/lib/action'
+import { signOut } from '@/app/api/auth/auth'
 
 type FormUpdateUserProps = {
   idUpdate: string
@@ -18,19 +19,12 @@ export default function FormUpdateUser({
   emailUpdate,
   imageUpdate,
 }: FormUpdateUserProps) {
-  const handleSubmit = async (data: FormData) => {
-    try {
-      const response = await updateUser(data)
-      console.log('Response:', response)
-    } catch (error) {
-      console.error('Error:', error)
-      alert('Wystąpił błąd podczas dodawania użytkownika')
-    }
-  }
-
   return (
     <form
-      action={handleSubmit}
+      action={async (formData) => {
+        await updateUser(formData)
+        
+      }}
       className='w-full space-y-4 px-4'
     >
       <h2 className='text-2xl font-semibold'>Uaktualnij konto</h2>
