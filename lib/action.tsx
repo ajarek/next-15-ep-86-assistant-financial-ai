@@ -75,8 +75,16 @@ export const updateUser = async (formData: FormData) => {
 
 export const resetPassword = async (formData: FormData) => {
   const id = formData.get('id')
-  const password = formData.get('password')
-  const hashedPassword =  bcrypt.hash(password, 5)
+  const passwordValue = formData.get('password')
+  
+ if (typeof passwordValue !== 'string' || !passwordValue) {
+    return { message: 'Hasło jest wymagane i musi być ciągiem znaków.' }
+  }
+  if (typeof id !== 'string' || !id) {
+    return { message: 'Wymagane jest podanie identyfikatora użytkownika.'}
+  }
+
+  const hashedPassword = await bcrypt.hash(passwordValue, 5)
 
   try {
     await connectToDb()

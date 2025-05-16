@@ -3,6 +3,7 @@ import { auth } from '@/app/api/auth/auth'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ModeToggle } from '@/components/ModeToggle'
+import Subscription from '@/components/Subscription'
 
 
 const Setup = async () => {
@@ -28,32 +29,19 @@ const Setup = async () => {
             />
             <div>
               <div> {session?.user?.email || ''}</div>
-              <div> Plan Premium</div>
+              
               
             </div>
           </div>
 
           <Link
             href={`/dashboard/updateUser?id=${session?.user?.id}&name=${session?.user?.name}&email=${session?.user?.email}&image=${session?.user?.image}`}
-            className='bg-primary text-primary-foreground py-2 px-4 rounded-sm '
+            className='bg-primary text-primary-foreground py-1 px-4 rounded-sm '
           >
             Edytuj Profil
           </Link>
         </div>
-        <div className='w-full flex  items-center justify-between'>
-          <div className='flex items-center gap-4 '>
-            <div>
-              <div>Plan Subskrypcji</div>
-              <div> Plan Premium</div>
-            </div>
-          </div>
-          <Link
-            href={'/'}
-            className='bg-primary text-primary-foreground py-2 px-4 rounded-sm '
-          >
-            Subskrypcje
-          </Link>
-        </div>
+        <Subscription/>
         <div className='w-full flex  items-center justify-between'>
           <div className='flex items-center gap-4 '>
             <div>
@@ -62,8 +50,8 @@ const Setup = async () => {
             </div>
           </div>
           <Link
-            href={`/changePassword?id=${session?.user?.id}`}
-            className='bg-primary text-primary-foreground py-2 px-4 rounded-sm '
+            href={`/dashboard/changePassword?id=${session?.user?.id}`}
+            className='bg-primary text-primary-foreground py-1 px-4 rounded-sm '
           >
             Zmień Hasło
           </Link>
