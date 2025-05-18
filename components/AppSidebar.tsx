@@ -106,7 +106,7 @@ const AppSidebar = async () => {
           className='bg-transparent flex items-center justify-start hover:bg-primary hover:text-white transition-all delay-200 '
         >
           <Link
-            href={'/ai-assistant'}
+            href={'/dashboard/ai-assistant'}
             className='flex items-center gap-2 font-semibold'
           >
             <Sparkles
@@ -135,31 +135,32 @@ const AppSidebar = async () => {
       </SidebarMenu>
 
       <SidebarContent className='p-2 '>
-        <div className='bg-sky-300 text-black border-2 border-primary rounded-lg p-2 shadow-xl space-y-2'>
-          <div className='flex items-center gap-2 font-semibold'>
+        <div className='bg-sky-300  border-2 border-primary rounded-lg p-2 shadow-xl space-y-2'>
+          <div className='flex items-center gap-2 font-semibold text-black'>
             <Sparkles
               size={24}
               strokeWidth={2}
             />
             <h2>Doradca AI</h2>
           </div>
-          <p>
+          <p className='text-black'>
             Uzyskaj natychmiastowe odpowiedzi na swoje pytania finansowe i
             spersonalizowaną poradę.
           </p>
           <SidebarMenuButton
             asChild
-            className='bg-primary text-white flex items-center justify-center hover:bg-violet-500   transition-all delay-200 '
+            className=' flex items-center justify-center bg-primary hover:bg-primary/90  transition-all delay-200 '
           >
             <Link
               href={'/ai-assistant'}
-              className='flex items-center gap-2 font-semibold'
+              className=' flex items-center gap-2 '
             >
               <MessageSquare
                 size={24}
                 strokeWidth={2}
+                color='white'
               />
-              <span>Start Chat</span>
+              <span className='text-white'>Start Chat</span>
             </Link>
           </SidebarMenuButton>
         </div>
