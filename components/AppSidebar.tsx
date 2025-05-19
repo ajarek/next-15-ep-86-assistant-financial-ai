@@ -152,7 +152,7 @@ const AppSidebar = async () => {
             className=' flex items-center justify-center bg-primary hover:bg-primary/90  transition-all delay-200 '
           >
             <Link
-              href={'/ai-assistant'}
+              href={'/dashboard/ai-advisor'}
               className=' flex items-center gap-2 '
             >
               <MessageSquare
