@@ -1,10 +1,23 @@
 import React from 'react'
 import CardAiAssistant from '@/components/CardAiAssistant'
+import Link from 'next/link'
+import { Plus } from 'lucide-react'
 
 const aiAssistant = () => {
   return (
     <div className=' flex flex-col items-center justify-start h-screen gap-4 px-4 '>
+      <div className='flex items-center justify-between w-full'>
       <h1 className='text-2xl font-semibold'>Porady AI</h1>
+      <Link
+              href={'/dashboard/ai-advisor'}
+              className=' flex items-center gap-2 bg-primary px-4 py-2 rounded-md text-white hover:bg-primary/90  transition-all delay-200 duration-300'
+            >
+              <Plus   size={24}
+                strokeWidth={2}
+                color='white' />
+              <span className='text-white'>Nowa Porada</span>
+            </Link>
+      </div>
       <div className='w-full  grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center pb-6'>
         <CardAiAssistant
           title='AI optymalizuje fundusz awaryjny'

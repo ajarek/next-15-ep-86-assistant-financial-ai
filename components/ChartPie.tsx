@@ -51,12 +51,12 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function ChartPie() {
+export function ChartPie({title, description, text1, text2}: {description:string, title:string, text1:string, text2:string}) {
   return (
     <Card className="w-full  flex flex-col">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Wykres kołowy Przychodów</CardTitle>
-        <CardDescription>Styczeń - Czerwiec 2024</CardDescription>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
@@ -81,12 +81,12 @@ export function ChartPie() {
           </PieChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col gap-2 text-sm">
-        <div className="flex items-center gap-2 font-medium leading-none">
-          W tym miesiącu odnotowano wzrost o 5,2% <TrendingUp className="h-4 w-4" />
+      <CardFooter className="w-full flex flex-col items-start gap-2 text-sm">
+        <div className="font-medium leading-none">
+          {text1}
         </div>
         <div className="leading-none text-muted-foreground">
-          Wyświetlanie wartości kosztów w ciągu 6 miesięcy.
+         {text2}
         </div>
       </CardFooter>
     </Card>

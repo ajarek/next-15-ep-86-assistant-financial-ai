@@ -90,7 +90,7 @@ const AppSidebar = async () => {
           className='bg-transparent flex items-center justify-start hover:bg-primary hover:text-white transition-all delay-200 '
         >
           <Link
-            href={'/budget'}
+            href={'/dashboard/budget'}
             className='flex items-center gap-2 font-semibold'
           >
             <Wallet
@@ -149,7 +149,7 @@ const AppSidebar = async () => {
           </p>
           <SidebarMenuButton
             asChild
-            className=' flex items-center justify-center bg-primary hover:bg-primary/90  transition-all delay-200 '
+            className=' flex items-center justify-center bg-primary hover:bg-primary/90  transition-all delay-200 duration-300 '
           >
             <Link
               href={'/dashboard/ai-advisor'}

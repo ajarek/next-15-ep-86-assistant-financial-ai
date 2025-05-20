@@ -38,7 +38,7 @@ const Dashboard = async () => {
       <div className='w-full  grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center'>
         <ChartBar />
         <ChartDonut />
-        <ChartPie />
+        <ChartPie title='Struktura Wydatków' description='Styczeń-Lipiec 2024' text1='W tym miesiącu odnotowano wzrost o 5,2%' text2='Wyświetlanie liczby odwiedzających w ciągu 6 miesięcy.' />
         <ChartLinear />
       </div>
 
