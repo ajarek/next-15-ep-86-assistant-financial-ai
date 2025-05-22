@@ -62,6 +62,8 @@ const AddIncome = () => {
             placeholder='6400'
             name='income'
             id='income'
+            step={'0.01'}
+            min={'0'}
           />
         </div>
 
@@ -70,7 +72,7 @@ const AddIncome = () => {
             type='submit'
             className='w-full'
           >
-            Dodaj Cel
+            Dodaj Przychód
           </Button>
         </div>
       </form>

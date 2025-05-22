@@ -1,8 +1,8 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
-import { LabelList, Pie, PieChart } from "recharts"
 
+import { LabelList, Pie, PieChart } from "recharts"
+import { useExpenseStore } from '@/store/expenseStore'
 import {
   Card,
   CardContent,
@@ -17,31 +17,23 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
-const chartData = [
-  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 90, fill: "var(--color-other)" },
-]
+
 
 const chartConfig = {
-  visitors: {
-    label: "Koszt",
-  },
-  chrome: {
+ 
+  food: {
     label: "Żywność",
     color: "var(--chart-1)",
   },
-  safari: {
+  transport: {
     label: "Transport",
     color: "var(--chart-2)",
   },
-  firefox: {
+  entertainment: {
     label: "Rozrywka",
     color: "var(--chart-3)",
   },
-  edge: {
+  fees: {
     label: "Opłaty",
     color: "var(--chart-4)",
   },
@@ -52,6 +44,21 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function ChartPie({title, description, text1, text2}: {description:string, title:string, text1:string, text2:string}) {
+  const {  itemsExpense: items,} = useExpenseStore()
+  const foodSum=items.filter(el=>el.type==='Żywność').reduce((acc, item) => acc + item.expense, 0)
+  const transportSum=items.filter(el=>el.type==='Transport').reduce((acc, item) => acc + item.expense, 0)
+  const entertainmentSum=items.filter(el=>el.type==='Rozrywka').reduce((acc, item) => acc + item.expense, 0)
+  const feesSum=items.filter(el=>el.type==='Opłaty').reduce((acc, item) => acc + item.expense, 0)
+  const otherSum=items.filter(el=>el.type==='Inne').reduce((acc, item) => acc + item.expense, 0)
+
+  const chartData = [
+  foodSum?{ browser: "food", visitors: foodSum, fill: "var(--color-food)" }:null,
+  transportSum?{ browser: "transport", visitors: transportSum, fill: "var(--color-transport)" }:null,
+  entertainmentSum?{ browser: "entertainment", visitors: entertainmentSum, fill: "var(--color-entertainment)" }:null,
+  feesSum?{ browser: "fees", visitors: feesSum, fill: "var(--color-fees)" }:null,
+ otherSum? { browser: "other", visitors: otherSum, fill: "var(--color-other)" }:null,
+]
+
   return (
     <Card className="w-full  flex flex-col">
       <CardHeader className="items-center pb-0">

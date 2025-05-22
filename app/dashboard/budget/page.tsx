@@ -5,12 +5,17 @@ import { ChartPie } from '@/components/ChartPie'
 import Link from 'next/link'
 import { Plus } from 'lucide-react'
 import { useIncomeStore } from '@/store/incomeStore'
+import { useExpenseStore } from '@/store/expenseStore'
 
-const expenses = 3100.25
+
 
 const Budget = () => {
   const { items } = useIncomeStore()
+  const { itemsExpense } = useExpenseStore()
+
   const income = items.reduce((acc, item) => acc + item.income, 0)
+  const expense = itemsExpense.reduce((acc, item) => acc + item.expense, 0)
+
 
   return (
     <div className='min-h-screen w-full  flex flex-col gap-4  rounded-xl shadow-md overflow-hidden px-6'>
@@ -21,26 +26,26 @@ const Budget = () => {
             Dochód <span>{income.toFixed(2)}zł</span>
           </p>
           <p className='flex items-center justify-between'>
-            Wydatki <span>{expenses.toFixed(2)}zł</span>
+            Wydatki <span>{expense.toFixed(2)}zł</span>
           </p>
           <p className='flex items-center justify-between text-xl'>
             Saldo{' '}
             <span
               className={
-                income - expenses > 0 ? 'text-green-500' : 'text-red-500'
+                income - expense > 0 ? 'text-green-500' : 'text-red-500'
               }
             >
-              {(income - expenses).toFixed(2)}zł
+              {(income - expense).toFixed(2)}zł
             </span>
           </p>
           <p>
             Stopień wykorzystania zasobów:{' '}
             <span>
-              {(income > 0 ? (expenses / income) * 100 : 100).toFixed(2)}%
+              {(income > 0 ? (expense / income) * 100 : 100).toFixed(2)}%
             </span>
           </p>
           <Progress
-            value={income > 0 ? (expenses / income) * 100 : 100}
+            value={income > 0 ? (expense / income) * 100 : 100}
             max={income > 0 ? income : 100}
           />
           <div>
@@ -60,6 +65,24 @@ const Budget = () => {
                     </div>
                     <div>{item.name}</div>
                     <div>{item.income.toFixed(2)}PLN</div>
+                  </div>
+                ))}
+            </div>
+            <div>
+              {itemsExpense
+                .filter((item, index) => index < 2)
+
+                .map((item) => (
+                  <div
+                    key={item.id}
+                    className='flex items-center justify-between mb-2 text-red-500'
+                  >
+                    <div>
+                      {item.date.split('T')[0]}{' '}
+                      {item.date.split('T')[1].split('.')[0]}
+                    </div>
+                    <div>{item.name}</div>
+                    <div>{item.expense.toFixed(2)}PLN</div>
                   </div>
                 ))}
             </div>
