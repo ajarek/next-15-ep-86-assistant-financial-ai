@@ -14,6 +14,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 const AddIncome = () => {
   const { addItemToIncome, items, removeItemFromIncome } = useIncomeStore()
@@ -26,12 +33,14 @@ const AddIncome = () => {
         action={async (formData) => {
           const name = formData.get('name')
           const income = formData.get('income')
+          const type = formData.get('type')
 
           const newIncome: Item = {
             id: new Date().getTime(),
             name: String(name || ''),
             income: Number(income || 0),
             date: new Date().toISOString(),
+            type: String(type || ''),
           }
           await addItemToIncome(newIncome)
         }}
@@ -66,7 +75,18 @@ const AddIncome = () => {
             min={'0'}
           />
         </div>
-
+<Select name='type' >
+  <SelectTrigger className="w-full">
+    <SelectValue placeholder="Typ Przychodu" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="Wypłata">Wypłata</SelectItem>
+    <SelectItem value="Oprocentowanie">Oprocentowanie</SelectItem>
+    <SelectItem value="Kredyt">Kredyt</SelectItem>
+    <SelectItem value="Inwestycje">Inwestycje</SelectItem>
+    <SelectItem value="Inne">Inne</SelectItem>
+  </SelectContent>
+</Select>
         <div>
           <Button
             type='submit'
@@ -84,6 +104,7 @@ const AddIncome = () => {
     <TableRow>
       <TableHead className="">Data</TableHead>
       <TableHead>Operacja</TableHead>
+      <TableHead>Typ</TableHead>
       <TableHead className="text-right">Kwota</TableHead>
       <TableHead className="text-center w-[200px]">Usuń</TableHead>
     </TableRow>
@@ -93,6 +114,7 @@ const AddIncome = () => {
     <TableRow key={item.id}>     
       <TableCell className="font-medium">{item.date.split('T')[0]}{' '}{item.date.split('T')[1].split('.')[0]}</TableCell>
       <TableCell>{item.name}</TableCell>
+      <TableCell>{item.type}</TableCell>
       <TableCell className="text-right">{item.income.toFixed(2)}</TableCell>
       <TableCell className="text-center w-[200px]">
       <Button size={'icon'} className='bg-transparent hover:bg-transparent hover:text-xl transition-all delay-200 ease-in-out cursor-pointer' onClick={() => removeItemFromIncome(item.id)}>❌</Button>

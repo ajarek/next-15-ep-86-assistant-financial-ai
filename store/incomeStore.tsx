@@ -6,6 +6,7 @@ export type Item = {
   name: string
   income: number
   date:string
+  type:string
 }
 
 type ItemState = {
