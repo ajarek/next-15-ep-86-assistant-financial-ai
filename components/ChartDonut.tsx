@@ -23,23 +23,21 @@ import {useIncomeStore} from "@/store/incomeStore";
 
 
 const chartConfig = {
-  visitors: {
-    label: "Visitors",
-  },
-  chrome: {
-    label: "Chrome",
+ 
+  procent: {
+    label: "Oprocentowanie",
     color: "var(--chart-1)",
   },
-  safari: {
-    label: "Safari",
+  credit: {
+    label: "Kredyt",
     color: "var(--chart-2)",
   },
-  firefox: {
-    label: "Firefox",
+  income: {
+    label: "Wypłata",
     color: "var(--chart-3)",
   },
-  edge: {
-    label: "Edge",
+  invest: {
+    label: "Inwestycje",
     color: "var(--chart-4)",
   },
   other: {
@@ -51,17 +49,22 @@ const chartConfig = {
 export function ChartDonut() {
   const {items} = useIncomeStore()
   
-  const chartData = [
-{ browser: `kot`, visitors: 275, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 287, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 190, fill: "var(--color-other)" },
-]
-  const totalVisitors = React.useMemo(() => {
-    return chartData.reduce((acc, curr) => acc + curr.visitors, 0)
-  }, [])
+const procentSum=items.filter(el=>el.type==='Oprocentowanie').reduce((acc, item) => acc + item.income, 0)
+console.log(procentSum)
+  const creditSum=items.filter(el=>el.type==='Kredyt').reduce((acc, item) => acc + item.income, 0)
+  const incomeSum=items.filter(el=>el.type==='Wypłata').reduce((acc, item) => acc + item.income, 0)
+  const investSum=items.filter(el=>el.type==='Inwestycje').reduce((acc, item) => acc + item.income, 0)
+  const otherSum=items.filter(el=>el.type==='Inne').reduce((acc, item) => acc + item.income, 0)
 
+  const chartData = [
+  procentSum?{ browser: "Oprocentowanie", visitors: procentSum, fill: "var(--color-procent)" }:null,
+  creditSum?{ browser: "Kredyt", visitors: creditSum, fill: "var(--color-credit)" }:null,
+  incomeSum?{ browser: "Wypłata", visitors: incomeSum, fill: "var(--color-income)" }:null,
+  investSum?{ browser: "Inwestycje", visitors: investSum, fill: "var(--color-invest)" }:null,
+  otherSum?{ browser: "Inne", visitors: otherSum, fill: "var(--color-other)" }:null,
+]
+  const totalVisitors = chartData.reduce((acc, curr) => acc + (curr?.visitors || 0), 0)
+   
 
   return (
     <Card className="w-full  flex flex-col">

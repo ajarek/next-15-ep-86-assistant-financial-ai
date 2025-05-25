@@ -26,7 +26,7 @@ const AddExpense = () => {
   const { addItemToExpense, itemsExpense: items, removeItemFromExpense } = useExpenseStore()
 
   return (
-    <div className=' w-full  flex flex-col gap-4  rounded-xl shadow-md overflow-hidden px-6'>
+    <div className=' w-full  flex flex-col gap-4  rounded-xl shadow-md overflow-hidden px-6 pb-4'>
       <h1 className='text-2xl font-bold text-center  '>Dodaj Wydatek</h1>
       <form
         className='flex flex-col gap-6 '
@@ -104,7 +104,7 @@ const AddExpense = () => {
     <TableRow>
       <TableHead className="">Data</TableHead>
       <TableHead>Operacja</TableHead>
-      <TableHead>Type</TableHead>
+      <TableHead className='max-lg:hidden'>Type</TableHead>
       <TableHead className="text-right">Kwota</TableHead>
       <TableHead className="text-center w-[200px]">Usuń</TableHead>
     </TableRow>
@@ -114,7 +114,7 @@ const AddExpense = () => {
     <TableRow key={item.id}>     
       <TableCell className="font-medium">{item.date.split('T')[0]}{' '}{item.date.split('T')[1].split('.')[0]}</TableCell>
       <TableCell>{item.name}</TableCell>
-      <TableCell>{item.type}</TableCell>
+      <TableCell className='max-lg:hidden'>{item.type}</TableCell>
       <TableCell className="text-right">{item.expense.toFixed(2)}</TableCell>
       <TableCell className="text-center w-[200px]">
       <Button size={'icon'} className='bg-transparent hover:bg-transparent hover:text-xl transition-all delay-200 ease-in-out cursor-pointer' onClick={() => removeItemFromExpense(item.id)}>❌</Button>

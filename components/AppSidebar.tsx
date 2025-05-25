@@ -172,7 +172,7 @@ const AppSidebar = async () => {
           className='bg-transparent flex items-center justify-start hover:bg-primary hover:text-white transition-all delay-200 mb-2 '
         >
           <Link
-            href={'/help'}
+            href={'/dashboard/help'}
             className='flex items-center gap-2 font-semibold'
           >
             <MessageCircleQuestion

@@ -15,7 +15,7 @@ const Setup = async () => {
   return (
     <div className=' flex flex-col items-start justify-start h-screen gap-4 px-4'>
       <h1 className='text-2xl font-semibold'>Ustawienia</h1>
-      <div className='w-full flex flex-col gap-4 border-2  rounded-lg p-4 shadow-xl'>
+      <div className='w-full flex flex-col gap-4 border-2 border-primary rounded-lg p-4 shadow-xl'>
         <h2 className='text-xl font-semibold'>Ustawienia konta</h2>
         <div className='w-full flex  items-center justify-between'>
 

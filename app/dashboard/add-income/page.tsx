@@ -13,20 +13,20 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from '@/components/ui/table'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from '@/components/ui/select'
 
 const AddIncome = () => {
   const { addItemToIncome, items, removeItemFromIncome } = useIncomeStore()
 
   return (
-    <div className=' w-full  flex flex-col gap-4  rounded-xl shadow-md overflow-hidden px-6'>
+    <div className=' w-full  flex flex-col gap-4  rounded-xl shadow-md overflow-hidden px-6 pb-4'>
       <h1 className='text-2xl font-bold text-center  '>Dodaj Przychód</h1>
       <form
         className='flex flex-col gap-6 '
@@ -54,7 +54,7 @@ const AddIncome = () => {
           </Label>
           <Input
             type='text'
-            placeholder='Wypłata '
+            placeholder='Przychód  '
             name='name'
             id='name'
           />
@@ -75,18 +75,18 @@ const AddIncome = () => {
             min={'0'}
           />
         </div>
-<Select name='type' >
-  <SelectTrigger className="w-full">
-    <SelectValue placeholder="Typ Przychodu" />
-  </SelectTrigger>
-  <SelectContent>
-    <SelectItem value="Wypłata">Wypłata</SelectItem>
-    <SelectItem value="Oprocentowanie">Oprocentowanie</SelectItem>
-    <SelectItem value="Kredyt">Kredyt</SelectItem>
-    <SelectItem value="Inwestycje">Inwestycje</SelectItem>
-    <SelectItem value="Inne">Inne</SelectItem>
-  </SelectContent>
-</Select>
+        <Select name='type'>
+          <SelectTrigger className='w-full'>
+            <SelectValue placeholder='Typ Przychodu' />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value='Wypłata'>Wypłata</SelectItem>
+            <SelectItem value='Oprocentowanie'>Oprocentowanie</SelectItem>
+            <SelectItem value='Kredyt'>Kredyt</SelectItem>
+            <SelectItem value='Inwestycje'>Inwestycje</SelectItem>
+            <SelectItem value='Inne'>Inne</SelectItem>
+          </SelectContent>
+        </Select>
         <div>
           <Button
             type='submit'
@@ -98,33 +98,45 @@ const AddIncome = () => {
       </form>
       <div>
         <h1 className='text-xl font-bold text-left  '>Dodane Przychody</h1>
-          <Table>
-  <TableCaption>Suma: {items.reduce((acc, item) => acc + item.income, 0).toFixed(2)} PLN</TableCaption>
-  <TableHeader className='border-b-2 border-primary'>
-    <TableRow>
-      <TableHead className="">Data</TableHead>
-      <TableHead>Operacja</TableHead>
-      <TableHead>Typ</TableHead>
-      <TableHead className="text-right">Kwota</TableHead>
-      <TableHead className="text-center w-[200px]">Usuń</TableHead>
-    </TableRow>
-  </TableHeader>
-  <TableBody>
-    {items.map((item) => (
-    <TableRow key={item.id}>     
-      <TableCell className="font-medium">{item.date.split('T')[0]}{' '}{item.date.split('T')[1].split('.')[0]}</TableCell>
-      <TableCell>{item.name}</TableCell>
-      <TableCell>{item.type}</TableCell>
-      <TableCell className="text-right">{item.income.toFixed(2)}</TableCell>
-      <TableCell className="text-center w-[200px]">
-      <Button size={'icon'} className='bg-transparent hover:bg-transparent hover:text-xl transition-all delay-200 ease-in-out cursor-pointer' onClick={() => removeItemFromIncome(item.id)}>❌</Button>
-      </TableCell>
-    </TableRow>
-    )
-    )}
-  </TableBody>
-</Table>
-
+        <Table>
+          <TableCaption>
+            Suma: {items.reduce((acc, item) => acc + item.income, 0).toFixed(2)}{' '}
+            PLN
+          </TableCaption>
+          <TableHeader className='border-b-2 border-primary'>
+            <TableRow>
+              <TableHead className=''>Data</TableHead>
+              <TableHead>Operacja</TableHead>
+              <TableHead className='max-lg:hidden'>Typ</TableHead>
+              <TableHead className='text-right'>Kwota</TableHead>
+              <TableHead className='text-center w-[200px]'>Usuń</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {items.map((item) => (
+              <TableRow key={item.id}>
+                <TableCell className='font-medium'>
+                  {item.date.split('T')[0]}{' '}
+                  {item.date.split('T')[1].split('.')[0]}
+                </TableCell>
+                <TableCell>{item.name}</TableCell>
+                <TableCell className='max-lg:hidden'>{item.type}</TableCell>
+                <TableCell className='text-right'>
+                  {item.income.toFixed(2)}
+                </TableCell>
+                <TableCell className='text-center w-[200px]'>
+                  <Button
+                    size={'icon'}
+                    className='bg-transparent hover:bg-transparent hover:text-xl transition-all delay-200 ease-in-out cursor-pointer'
+                    onClick={() => removeItemFromIncome(item.id)}
+                  >
+                    ❌
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </div>
     </div>
   )

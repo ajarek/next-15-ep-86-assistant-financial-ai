@@ -45,6 +45,7 @@ const chartConfig = {
 
 export function ChartPie({title, description, text1, text2}: {description:string, title:string, text1:string, text2:string}) {
   const {  itemsExpense: items,} = useExpenseStore()
+  
   const foodSum=items.filter(el=>el.type==='Żywność').reduce((acc, item) => acc + item.expense, 0)
   const transportSum=items.filter(el=>el.type==='Transport').reduce((acc, item) => acc + item.expense, 0)
   const entertainmentSum=items.filter(el=>el.type==='Rozrywka').reduce((acc, item) => acc + item.expense, 0)

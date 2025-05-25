@@ -18,21 +18,21 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 const chartData = [
-  { month: "Styczeń", desktop: 186, mobile: 80 },
-  { month: "Luty", desktop: 305, mobile: 200 },
-  { month: "Marzec", desktop: 237, mobile: 120 },
-  { month: "Kwiecień", desktop: 73, mobile: 190 },
-  { month: "Maj", desktop: 209, mobile: 130 },
-  { month: "Lipiec", desktop: 214, mobile: 140 },
+  { month: "Styczeń", income: 186, expense: 80 },
+  { month: "Luty", income: 305, expense: 200 },
+  { month: "Marzec", income: 237, expense: 120 },
+  { month: "Kwiecień", income: 73, expense: 190 },
+  { month: "Maj", income: 209, expense: 130 },
+  { month: "Lipiec", income: 214, expense: 140 },
 ]
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
+ income: {
+    label: "Przychody",
     color: "var(--chart-1)",
   },
-  mobile: {
-    label: "Mobile",
+  expense: {
+    label: "Koszty",
     color: "var(--chart-2)",
   },
 } satisfies ChartConfig
@@ -41,7 +41,7 @@ export function ChartBar() {
   return (
     <Card className="w-full ">
       <CardHeader>
-        <CardTitle>Wykres słupkowy - wielokrotny</CardTitle>
+        <CardTitle>Wykres Przychód/Koszty</CardTitle>
         <CardDescription>Styczeń - Lipiec 2024</CardDescription>
       </CardHeader>
       <CardContent>
@@ -59,8 +59,8 @@ export function ChartBar() {
               cursor={false}
               content={<ChartTooltipContent indicator="dashed" />}
             />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-            <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+            <Bar dataKey="income" fill="var(--color-income)" radius={4} />
+            <Bar dataKey="expense" fill="var(--color-expense)" radius={4} />
           </BarChart>
         </ChartContainer>
       </CardContent>

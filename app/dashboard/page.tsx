@@ -32,13 +32,13 @@ const Dashboard = async () => {
     redirect('/')
   }
   return (
-    <div className=' flex flex-col items-center justify-start h-screen gap-4 px-4'>
+    <div className=' flex flex-col items-center justify-start h-screen gap-4 px-4 pb-4'>
       <h1 className='text-2xl font-semibold'>Panel Użytkownika</h1>
       <DashboardHeader />
       <div className='w-full  grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center'>
         <ChartBar />
         <ChartDonut />
-        <ChartPie title='Struktura Wydatków' description='Styczeń-Lipiec 2024' text1='W tym miesiącu odnotowano wzrost o 5,2%' text2='Wyświetlanie liczby odwiedzających w ciągu 6 miesięcy.' />
+        <ChartPie title='Struktura Kosztów' description='Styczeń-Lipiec 2024' text1='W tym miesiącu odnotowano wzrost o 5,2%' text2='Wyświetlanie liczby odwiedzających w ciągu 6 miesięcy.' />
         <ChartLinear />
       </div>
 

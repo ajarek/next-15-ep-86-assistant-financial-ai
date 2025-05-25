@@ -18,17 +18,17 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 const chartData = [
-  { month: "Styczeń", desktop: 50 },
-  { month: "Luty", desktop:60 },
-  { month: "Marzec", desktop: 65 },
-  { month: "Kwiecień", desktop: 72 },
-  { month: "Maj", desktop: 75 },
-  { month: "Czerwiec", desktop: 80 },
+  { month: "Styczeń", income: 50 },
+  { month: "Luty", income:60 },
+  { month: "Marzec", income: 65 },
+  { month: "Kwiecień", income: 72 },
+  { month: "Maj", income: 75 },
+  { month: "Czerwiec", income: 80 },
 ]
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
+  income: {
+    label: "Przychód",
     color: "hsl(var(--chart-1))",
   },
 } satisfies ChartConfig
@@ -37,9 +37,9 @@ export function ChartLinear() {
   return (
     <Card className="w-full ">
       <CardHeader>
-        <CardTitle>Trend wartości netto</CardTitle>
+        <CardTitle>Trend wartości przychodów</CardTitle>
         <CardDescription>
-          Śledzenie wartości netto w ciągu 6 miesięcy
+          Śledzenie wartości przychodów w ciągu 6 miesięcy
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -65,7 +65,7 @@ export function ChartLinear() {
               content={<ChartTooltipContent indicator="dot" hideLabel />}
             />
             <Area
-              dataKey="desktop"
+              dataKey="income"
               type="linear"
               fill="var(--chart-4)"
               fillOpacity={0.4}

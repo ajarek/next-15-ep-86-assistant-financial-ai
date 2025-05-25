@@ -90,7 +90,7 @@ const Budget = () => {
         </div>
         <div className='relative p-4 border-2 border-primary rounded-lg'>
           <ChartPie
-            title='Struktura Wydatków'
+            title='Struktura Kosztów'
             description=''
             text1=''
             text2=''
