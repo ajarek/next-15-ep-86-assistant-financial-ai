@@ -7,8 +7,6 @@ import { Plus } from 'lucide-react'
 import { useIncomeStore } from '@/store/incomeStore'
 import { useExpenseStore } from '@/store/expenseStore'
 
-
-
 const Budget = () => {
   const { items } = useIncomeStore()
   const { itemsExpense } = useExpenseStore()
@@ -16,9 +14,8 @@ const Budget = () => {
   const income = items.reduce((acc, item) => acc + item.income, 0)
   const expense = itemsExpense.reduce((acc, item) => acc + item.expense, 0)
 
-
   return (
-    <div className='min-h-screen w-full  flex flex-col gap-4  rounded-xl shadow-md overflow-hidden px-6'>
+    <div className='min-h-screen w-full  flex flex-col gap-4  rounded-xl shadow-md overflow-hidden px-6 pb-4'>
       <h1 className='text-2xl font-bold mb-4'>Zarządzanie Budżetem</h1>
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
         <div className='p-4 border-2 border-primary rounded-lg space-y-4'>

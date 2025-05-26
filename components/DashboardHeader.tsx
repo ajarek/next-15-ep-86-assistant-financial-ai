@@ -61,7 +61,7 @@ const DashboardHeader = async () => {
           <div>
             <h2 className='font-semibold'>Wydatki</h2>
             <p>
-              Wydałeś o 12% mniej niż 
+              Wydałeś o 12% mniej niż
               <br /> w zeszłym miesiącu
             </p>
           </div>
@@ -73,8 +73,9 @@ const DashboardHeader = async () => {
           <div>
             <h2 className='font-semibold'>Stopa oszczędności</h2>
             <p>
-              Oszczędzasz 22% swojego 
-              <br />dochodu
+              Oszczędzasz 22% swojego
+              <br />
+              dochodu
             </p>
           </div>
         </div>

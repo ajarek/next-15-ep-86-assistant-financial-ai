@@ -23,7 +23,6 @@ export default function FormUpdateUser({
     <form
       action={async (formData) => {
         await updateUser(formData)
-        
       }}
       className='w-full space-y-4 px-4'
     >

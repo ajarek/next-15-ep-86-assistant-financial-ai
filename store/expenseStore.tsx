@@ -6,7 +6,7 @@ export type Item = {
   name: string
   type: string
   expense: number
-  date:string
+  date: string
 }
 
 type ItemState = {

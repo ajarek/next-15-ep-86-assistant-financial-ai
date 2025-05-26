@@ -40,14 +40,12 @@ export default function SignIn() {
         console.error(result.error)
       }
       if (result?.ok) {
-       
         router.push('/dashboard')
       }
     } catch (error) {
       console.error(error)
     }
-     reset()
-    
+    reset()
   }
 
   return (

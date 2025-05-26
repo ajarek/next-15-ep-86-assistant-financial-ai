@@ -62,12 +62,12 @@ export const updateUser = async (formData: FormData) => {
       }
     )
     console.log(`Updated user ${_id}`)
-   
+
     revalidatePath('/dashboard')
     return { message: `Updated user ${_id}` }
   } catch (err) {
     return { message: 'Failed to update to db' + err }
-  }finally{
+  } finally {
     await signOut()
     redirect('/')
   }
@@ -76,12 +76,12 @@ export const updateUser = async (formData: FormData) => {
 export const resetPassword = async (formData: FormData) => {
   const id = formData.get('id')
   const passwordValue = formData.get('password')
-  
- if (typeof passwordValue !== 'string' || !passwordValue) {
+
+  if (typeof passwordValue !== 'string' || !passwordValue) {
     return { message: 'Hasło jest wymagane i musi być ciągiem znaków.' }
   }
   if (typeof id !== 'string' || !id) {
-    return { message: 'Wymagane jest podanie identyfikatora użytkownika.'}
+    return { message: 'Wymagane jest podanie identyfikatora użytkownika.' }
   }
 
   const hashedPassword = await bcrypt.hash(passwordValue, 5)
@@ -97,11 +97,10 @@ export const resetPassword = async (formData: FormData) => {
     console.log(`Updated user ${id}`)
     revalidatePath('/dashboard')
     return { message: `Updated user ${id}` }
-  }catch{
+  } catch {
     return { message: 'Failed to update to db' }
-  
-}finally{
-  await signOut()
-  redirect('/')
-}
+  } finally {
+    await signOut()
+    redirect('/')
+  }
 }

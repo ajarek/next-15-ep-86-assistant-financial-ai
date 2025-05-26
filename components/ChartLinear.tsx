@@ -1,7 +1,7 @@
-"use client"
+'use client'
 
-import { TrendingUp } from "lucide-react"
-import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
+import { TrendingUp } from 'lucide-react'
+import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts'
 
 import {
   Card,
@@ -10,32 +10,32 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from '@/components/ui/card'
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"
+} from '@/components/ui/chart'
 const chartData = [
-  { month: "Styczeń", income: 50 },
-  { month: "Luty", income:60 },
-  { month: "Marzec", income: 65 },
-  { month: "Kwiecień", income: 72 },
-  { month: "Maj", income: 75 },
-  { month: "Czerwiec", income: 80 },
+  { month: 'Styczeń', income: 50 },
+  { month: 'Luty', income: 60 },
+  { month: 'Marzec', income: 65 },
+  { month: 'Kwiecień', income: 72 },
+  { month: 'Maj', income: 75 },
+  { month: 'Czerwiec', income: 80 },
 ]
 
 const chartConfig = {
   income: {
-    label: "Przychód",
-    color: "hsl(var(--chart-1))",
+    label: 'Przychód',
+    color: 'hsl(var(--chart-1))',
   },
 } satisfies ChartConfig
 
 export function ChartLinear() {
   return (
-    <Card className="w-full ">
+    <Card className='w-full '>
       <CardHeader>
         <CardTitle>Trend wartości przychodów</CardTitle>
         <CardDescription>
@@ -54,7 +54,7 @@ export function ChartLinear() {
           >
             <CartesianGrid vertical={false} />
             <XAxis
-              dataKey="month"
+              dataKey='month'
               tickLine={false}
               axisLine={false}
               tickMargin={8}
@@ -62,26 +62,32 @@ export function ChartLinear() {
             />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent indicator="dot" hideLabel />}
+              content={
+                <ChartTooltipContent
+                  indicator='dot'
+                  hideLabel
+                />
+              }
             />
             <Area
-              dataKey="income"
-              type="linear"
-              fill="var(--chart-4)"
+              dataKey='income'
+              type='linear'
+              fill='var(--chart-4)'
               fillOpacity={0.4}
-              stroke="var(--chart-4)"
+              stroke='var(--chart-4)'
             />
           </AreaChart>
         </ChartContainer>
       </CardContent>
       <CardFooter>
-        <div className="flex w-full items-start gap-2 text-sm">
-          <div className="grid gap-2">
-            <div className="flex items-center gap-2 font-medium leading-none">
-              W tym miesiącu odnotowano wzrost o 5,2% <TrendingUp className="h-4 w-4" />
+        <div className='flex w-full items-start gap-2 text-sm'>
+          <div className='grid gap-2'>
+            <div className='flex items-center gap-2 font-medium leading-none'>
+              W tym miesiącu odnotowano wzrost o 5,2%{' '}
+              <TrendingUp className='h-4 w-4' />
             </div>
-            <div className="flex items-center gap-2 leading-none text-muted-foreground">
-             Styczeń - Czerwiec 2024
+            <div className='flex items-center gap-2 leading-none text-muted-foreground'>
+              Styczeń - Czerwiec 2024
             </div>
           </div>
         </div>

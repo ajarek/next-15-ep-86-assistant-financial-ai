@@ -5,12 +5,8 @@ import Link from 'next/link'
 import { ModeToggle } from '@/components/ModeToggle'
 import Subscription from '@/components/Subscription'
 
-
 const Setup = async () => {
   const session = await auth()
-
- 
-
 
   return (
     <div className=' flex flex-col items-start justify-start h-screen gap-4 px-4'>
@@ -18,7 +14,6 @@ const Setup = async () => {
       <div className='w-full flex flex-col gap-4 border-2 border-primary rounded-lg p-4 shadow-xl'>
         <h2 className='text-xl font-semibold'>Ustawienia konta</h2>
         <div className='w-full flex  items-center justify-between'>
-
           <div className='flex items-center gap-4 '>
             <Image
               src={session?.user?.image || 'https://github.com/shadcn.png'}
@@ -29,8 +24,6 @@ const Setup = async () => {
             />
             <div>
               <div> {session?.user?.email || ''}</div>
-              
-              
             </div>
           </div>
 
@@ -41,7 +34,7 @@ const Setup = async () => {
             Edytuj Profil
           </Link>
         </div>
-        <Subscription/>
+        <Subscription />
         <div className='w-full flex  items-center justify-between'>
           <div className='flex items-center gap-4 '>
             <div>

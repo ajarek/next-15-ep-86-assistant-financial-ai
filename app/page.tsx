@@ -1,4 +1,3 @@
-
 import Information from '@/components/Information'
 import SignIn from '@/components/SignIn'
 import Image from 'next/image'
@@ -17,7 +16,6 @@ export default function Home() {
           <h1 className='text-2xl text-primary font-bold  '>Pilot Bogactwa</h1>
         </div>
         <SignIn />
-       
       </div>
       <Information />
     </div>

@@ -4,14 +4,6 @@ import Link from 'next/link'
 import React from 'react'
 import { useGoalsStore } from '@/store/goalsStore'
 
-interface Goal {
-  id: number
-  name: string
-  daysLeft: number
-  currentAmount: number
-  targetAmount: number
-}
-
 const formatCurrency = (amount: number) => {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -116,7 +108,7 @@ const FinancialGoals = () => {
           >
             + Dodaj Cel Finansowy
           </Link>
-          </div>
+        </div>
       )}
     </div>
   )

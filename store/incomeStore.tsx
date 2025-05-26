@@ -5,8 +5,8 @@ export type Item = {
   id: number
   name: string
   income: number
-  date:string
-  type:string
+  date: string
+  type: string
 }
 
 type ItemState = {

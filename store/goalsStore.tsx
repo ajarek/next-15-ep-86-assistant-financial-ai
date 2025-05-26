@@ -3,7 +3,7 @@ import { persist, createJSONStorage } from 'zustand/middleware'
 
 export type Item = {
   id: number
-   name: string
+  name: string
   daysLeft: number
   currentAmount: number
   targetAmount: number
@@ -26,20 +26,14 @@ export const useGoalsStore = create<ItemState>()(
           items: [item, ...state.items],
         })),
 
-     removeItemFromGoals: (id) =>
+      removeItemFromGoals: (id) =>
         set((state) => ({
           items: state.items.filter((item) => item.id !== +id),
         })),
-     
-        removeAll: () => set({ items: [] }),
-     
 
-     
-      
-
-  }),
+      removeAll: () => set({ items: [] }),
+    }),
 
     { name: 'GoalsStore', storage: createJSONStorage(() => localStorage) }
-      ) 
+  )
 )
-
