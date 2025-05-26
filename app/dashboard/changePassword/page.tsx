@@ -1,14 +1,10 @@
 import UpdatePassword from '@/components/UpdatePassword'
 import React from 'react'
 
-interface ChangePasswordPageProps {
-  searchParams: {
-    id: string
-  }
-}
 
-const ChangePassword = ({ searchParams }: ChangePasswordPageProps) => {
-  const { id } = searchParams
+
+const ChangePassword =async ({ searchParams }: { searchParams:  Promise<{ id: string }> }) => {
+  const { id } = await searchParams
 
   if (!id) {
     return (
