@@ -4,7 +4,7 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { updateUser } from '@/lib/action'
-import { signOut } from '@/app/api/auth/auth'
+
 
 type FormUpdateUserProps = {
   idUpdate: string
